@@ -46,11 +46,17 @@ function update() {
   // motion
   this.x = this.x + this.dx;
   this.y = this.y + this.dy;
+  
+  // Stop fall at ground level.
+  if(this.y > height) { 
+    this.y = height;
+    this.dy = 0;
+  }
 }
 function show() {
   // Create lander graphic
   translate(this.x,this.y)
   noStroke();
   fill(255);
-  rect(-25,-25,50,50);
+  rect(-25,-50,50,50);
 }
