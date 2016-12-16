@@ -1,4 +1,5 @@
 var ship;
+var scaleSpeed = .01;
 
 function setup() {
   createCanvas(400,400);
@@ -7,11 +8,8 @@ function setup() {
 
 function draw() {
   background(0);
-
-  //ship.update();
+  ship.update();
   ship.show();
-
-  
 }
 
 
@@ -42,8 +40,8 @@ function relocate(x,y) {
 }
 function update() {
   //calculate acceleration
-  this.dx = this.power * (this.thrusterLeft - this.thrusterRight);
-  this.dy = this.power * (this.thrusterDown - this.thrusterUp) - this.gravity;
+  this.dx = this.dx + scaleSpeed * (this.power * (this.thrusterLeft - this.thrusterRight));
+  this.dy = this.dy + scaleSpeed * (this.power * (this.thrusterTop - this.thrusterBottom) - this.gravity);
   
   // motion
   this.x = this.x + this.dx;
