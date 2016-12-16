@@ -1,3 +1,4 @@
+var autoResize = true;
 var ship;
 var scaleSpeed = .01;
 
@@ -90,5 +91,11 @@ function keyReleased() {
   }
   if(keyCode === DOWN_ARROW) {
     ship.thrusterBottom = 0;
+  }
+}
+
+function windowResized() {
+  if (autoResize) {
+    resizeCanvas(windowWidth, windowHeight);
   }
 }
