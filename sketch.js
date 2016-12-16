@@ -51,6 +51,7 @@ function update() {
   if(this.y > height) { 
     this.y = height;
     this.dy = 0;
+    this.dx = (this.dx * .9); //skid brake
   }
 }
 function show() {
