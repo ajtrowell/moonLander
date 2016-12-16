@@ -60,3 +60,34 @@ function show() {
   fill(255);
   rect(-25,-50,50,50);
 }
+
+
+// Keyboard Inputs
+function keyPressed() {
+  if(keyCode === LEFT_ARROW) {
+    ship.thrusterLeft = 1;
+  } 
+  if(keyCode === RIGHT_ARROW) {
+    ship.thrusterRight = 1;
+  }
+  if(keyCode === UP_ARROW) {
+    ship.thrusterTop = 1;
+  }
+  if(keyCode === DOWN_ARROW) {
+    ship.thrusterBottom = 1;
+  }
+}
+function keyReleased() {
+  if(keyCode === LEFT_ARROW) {
+    ship.thrusterLeft = 0;
+  } 
+  if(keyCode === RIGHT_ARROW) {
+    ship.thrusterRight = 0;
+  }
+  if(keyCode === UP_ARROW) {
+    ship.thrusterTop = 0;
+  }
+  if(keyCode === DOWN_ARROW) {
+    ship.thrusterBottom = 0;
+  }
+}
