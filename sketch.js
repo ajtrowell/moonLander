@@ -1,14 +1,19 @@
-var autoResize = true;
 var ship;
+var terrain;
 var scaleSpeed = .01;
+var autoResize = true;
+
+
 
 function setup() {
   createCanvas(400,400);
   ship = new Lander(width/2, 50);
+  terrain = new Terrain();
 }
 
 function draw() {
   background(0);
+  terrain.show();
   ship.update();
   ship.show();
 }
@@ -125,5 +130,35 @@ function keyReleased() {
 function windowResized() {
   if (autoResize) {
     resizeCanvas(windowWidth, windowHeight);
+    terrain.generate(); // Recreate terrain.
   }
+}
+
+
+// Terrain class constructor
+function Terrain() {
+  this.generate();
+}
+Terrain.prototype.generate = function() {
+  this.width = width; // width of canvas
+  this.height = height; // height of canvas
+  this.maxPeak = this.height*0.8; // Maximum possible proceedural point
+  this.minValley = this.height*0.05; // Lowest possible proceedural point
+  this.peak = random(this.minValley, this.maxPeak);
+  this.valley = random(this.minValley,this.peak);
+  this.groundLevel = []; // vector of ground height for each pixel
+  for (i=0;i<this.width;i++) {
+    this.groundLevel[i] = random(this.valley, this.peak); // will be crazy jagged.
+  }
+}
+Terrain.prototype.show = function() {
+  fill(200,120,80); // need orange
+  noStroke();
+  beginShape();
+  for(i=0;i<this.width;i++) {
+    vertex(i,this.height - this.groundLevel[i]);
+  }
+    vertex(this.width, this.height); // right bottom corner;
+    vertex(0, this.height); // left bottom corner;
+  endShape(CLOSE);
 }
