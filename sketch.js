@@ -21,8 +21,8 @@ function Lander(x,y) {
   
   this.dx = 0.0;
   this.dy = 0.0;
-  this.power = 20.0; // accel
-  this.gravity = -10.0; //accel
+  this.power = 10.0; // accel
+  this.gravity = -5.0; //accel
   
   // thruster flags (1 or 0)
   this.thrusterTop = 0.0;     //Pushes down
@@ -71,9 +71,13 @@ function update() {
 }
 function show() {
   // Create lander graphic
+  // (0,0) at botton center of landere
   translate(this.x,this.y)
   noStroke();
   fill(220);
+  let quadWidth = this.width/2;
+  let quadHeight = this.width/2;
+  triangle(0,-this.height-this.width,-this.width/2,-this.height+1,this.width/2,-this.height+1);
   rect(-this.width/2,-this.height,this.width,this.height);
 }
 
