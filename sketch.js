@@ -20,27 +20,7 @@ function draw() {
 
 
 
-function show() {
-  // Create lander graphic
-  // (0,0) at botton center of lander
-  // +x left, +y down
-  translate(this.x,this.y)
-  noStroke();
-  fill(150);
-  let quadWidth = this.width/4;
-  let quadHeight = this.width/4;
-    quad(quadWidth,-quadHeight-this.height, 
-      -quadWidth, -quadHeight-this.height,
-      -this.width/2, -this.height+1,
-       this.width/2, -this.height+1);
-    // Draw square body
-    rect(-this.width/2,-this.height,this.width,this.height);
-    // Draw fins
-    fill(255,20,20); // red
-    let finHeight = this.height/2;
-    triangle(-this.width/2 +1, 0,     -this.width/2 +1, -finHeight,    -this.width/2 - finHeight, 0);
-    triangle( this.width/2 -1, 0,      this.width/2 -1, -finHeight,     this.width/2 + finHeight, 0);
-}
+
 
 
 // Keyboard Inputs

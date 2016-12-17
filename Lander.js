@@ -17,19 +17,14 @@ function Lander(x,y) {
   // Lander Geometry, origin at (center,bottom)
   this.width = 30;
   this.height = 30;
-  
-  //methods
-  this.update = update;
-  this.show = show;
-  this.relocate = relocate;
 }
-function relocate(x,y) {
+Lander.prototype.relocate = function(x,y) {
   this.x = x;
   this.y = y;
   this.dx = 0.0;
   this.dy = 0.0;
 }
-function update() {
+Lander.prototype.update = function() {
   //calculate acceleration
   this.dx = this.dx + scaleSpeed * (this.power * (this.thrusterLeft - this.thrusterRight));
   this.dy = this.dy + scaleSpeed * (this.power * (this.thrusterTop - this.thrusterBottom) - this.gravity);
@@ -54,7 +49,7 @@ function update() {
     this.dx = 0;
   }
 }
-function show() {
+Lander.prototype.show = function() {
   // Create lander graphic
   // (0,0) at botton center of lander
   // +x left, +y down
