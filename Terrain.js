@@ -34,17 +34,17 @@ Terrain.prototype.generate = function() {
       this.slope *= -1; // flip slope
     }
 
-    this.groundLevels[i] = this.level; // Store clipped value.
+    this.groundLevels[i] = createVector(i,this.height - this.level); // Store clipped value.
   } // for loop
+  this.groundLevels[this.width] = createVector(this.width, this.height);
+  this.groundLevels[this.width + 1] = createVector(0, this.height);
 }
 Terrain.prototype.show = function() {
   fill(200,120,80); // need orange
   noStroke();
   beginShape();
-  for(i=0;i<this.width;i++) {
-    vertex(i,this.height - this.groundLevels[i]);
+  for(i=0;i<this.groundLevels.length;i++) {
+    vertex(this.groundLevels[i].x,this.groundLevels[i].y);
   }
-    vertex(this.width, this.height); // right bottom corner;
-    vertex(0, this.height); // left bottom corner;
   endShape(CLOSE);
 }

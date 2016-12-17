@@ -9,6 +9,7 @@ function setup() {
   createCanvas(400,400);
   ship = new Lander(width/2, 50);
   terrain = new Terrain();
+  collideDebug(true);
 }
 
 function draw() {
@@ -16,6 +17,16 @@ function draw() {
   terrain.show();
   ship.update();
   ship.show();
+
+  // Collision detection
+  hit = collideLinePoly(ship.x - ship.width/2, ship.y, 
+                        ship.x + ship.width/2, ship.y, 
+                        terrain.groundLevels);
+  if(hit) {
+    fill(200,20,20);
+    ellipse(ship.x,ship.y,ship.width,ship.height);
+  }
+
 }
 
 

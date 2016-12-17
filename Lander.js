@@ -53,6 +53,7 @@ Lander.prototype.show = function() {
   // Create lander graphic
   // (0,0) at botton center of lander
   // +x left, +y up
+  push(); // Important for keeping transformations local.
   translate(this.x,this.y)
   scale(1,-1);
   noStroke();
@@ -71,4 +72,5 @@ Lander.prototype.show = function() {
     let finHeight = this.height/2;
     triangle(-this.width/2 +1, 0,     -this.width/2 +1, finHeight,    -this.width/2 - finHeight, 0);
     triangle( this.width/2 -1, 0,      this.width/2 -1, finHeight,     this.width/2 + finHeight, 0);
+    pop(); // Important for keeping transformations local.
 }
