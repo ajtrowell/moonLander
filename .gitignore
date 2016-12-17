@@ -1,0 +1,5 @@
+# Vim
+*.swp
+
+# Sublime workspace and project files
+*.sublime*
