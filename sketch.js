@@ -29,6 +29,10 @@ function Lander(x,y) {
   this.thrusterBottom = 0.0;  //Pushes up
   this.thrusterRight = 0.0;   //Pushes left
   this.thrusterLeft = 0.0;    //Pushes right
+
+  // Lander Geometry, origin at (center,bottom)
+  this.width = 30;
+  this.height = 50;
   
   //methods
   this.update = update;
@@ -54,13 +58,23 @@ function update() {
     this.dy = 0;
     this.dx = (this.dx * .9); //skid brake
   }
+
+  //stop at screen sides
+  if( this.x > width - this.width/2) { 
+    this.x = width-this.width/2;
+    this.dx = 0;
+  } else if( this.x < 0 + this.width/2) { 
+    this.x = 0 + this.width/2;
+    this.dx = 0;
+  }
+
 }
 function show() {
   // Create lander graphic
   translate(this.x,this.y)
   noStroke();
-  fill(255);
-  rect(-25,-50,50,50);
+  fill(220);
+  rect(-this.width/2,-this.height,this.width,this.height);
 }
 
 
