@@ -26,10 +26,15 @@ function draw() {
     fill(200,20,20);
     ellipse(ship.x,ship.y,ship.width,ship.height);
   }
+  stopOnTerrain(ship,terrain);
 
 }
 
-
+function stopOnTerrain(obj,terrain) {
+  if(obj.y > terrain.groundLevels[round(obj.x)].y) {
+    obj.relocate(round(obj.x),terrain.groundLevels[round(obj.x)].y);
+  }
+}
 
 
 
